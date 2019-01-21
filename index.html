@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>IMS (Inventory Management System)</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+        <script src="js/nApp.js"></script>
+    </head>
+    <body>
+        <div class='container-fluid'>
+            <div class='row'>
+                <div class='col'>
+                    <h2>IMS (Inventory Management System)</h2>
+                </div>
+                <div class='col-sm-3'>
+                    <form class="form-inline">
+                        <input class="form-control mr-sm-2-ml-auto" type="search" id = "json" placeholder="Search" aria-label="Search" name="json">
+                        <button id="search" type="button" class="btn btn-outline-success my-2 my-sm-0">Search</button>
+                        <button id="searchForm" type= "button" class="btn btn-outline-success my-2 my-sm-0">Filter</button>
+                        <button id="unfilter" type= "button" class="btn btn-outline-success my-2 my-sm-0" style="display: none">Cancel</button>
+                    </form>
+                </div>
+            </div>
+            <div class='row'>
+                <div class='col'>
+                    <div class='form-group form-group-sm'>
+                        <label for='deviceID'>Device ID:</label>
+                        <input type='text' class='form-control' id='deviceID' value='new' readonly>
+                    </div>
+                </div>
+                <div class='col'>
+                    <div class='form-group form-group-sm'>
+                        <label for='location'>Location:</label>
+                        <input type='text' class='form-control' id='location'>
+                    </div>                     
+                </div>
+                <div class='col'>
+                    <div class='form-group form-group-sm'>
+                        <label for='user'>User:</label>
+                        <input type='text' class='form-control' id='user'>
+                    </div>
+                </div>
+                <div class='col'>
+                </div>
+            </div>
+            <div class='row'>
+                <div class='col'>
+                    <div class='form-group form-group-sm'>
+                        <label for='purchaseID'>Purchase ID:</label>
+                        <input type='text' class='form-control' id='purchaseID'>
+                    </div>
+                </div>
+                <div class='col'>
+                    <div class='form-group form-group-sm'>
+                        <label for='supplier'>Supplier</label>
+                        <input type='text' class='form-control' id='supplier'>
+                    </div>                     
+                </div>
+                <div class='col'>
+                    <div class='form-group form-group-sm'>
+                        <label for='mongoID'></label>
+                        <input type='text' class='form-control' id='mongoID' style="display: none">
+                    </div>
+                </div>
+                <div class='col'>
+                </div>
+            </div>
+            <div class='row'>
+                <div class='col'>
+                    Components
+                </div>
+            </div>
+            <div class='row'>
+                <div class='col' style='height: 50vh; overflow: auto'>
+                    <table id='componentsTable' class='table table-hover table-bordered table-condensed'>
+                        <thead>
+                            <tr>
+								<th><input  id='selectAllComponents' type='checkbox'></th>
+                                <th>Device ID</th>
+                                <th>Component ID</th>
+                                <th>Type</th>
+                                <th>Label</th>
+                                <th>Serial Number</th>
+                                <th>State</th>
+                                <th>Cost</th>
+                                <th>Delivery Date</th>
+                                <th><button id=editRow type='button' class='componentEdit btn btn-sm'><i class="fas fa-edit"></i></button></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <script>document.write(rowTemplate);</script>
+                        </tbody>
+                    </table>
+                    <button id='newComponent' type='button' class='btn'><i class='far fa-plus-square'></i></button>
+                </div>
+            </div>
+            <div class='row'>
+                <div class='col'>
+                    <button id='firstDevice' type='button' class='btn'><i class='fas fa-step-backward'></i></button>
+                    <button id='previousDevice' type='button' class='btn'><i class='fas fa-caret-left'></i></button>
+                    <input  id='newIndex' type='number' style='display: none'>
+                    <button id='deviceIndex' type='button' class='btn' data-toggle="button" aria-pressed="false"></button>
+                    <button id='nextDevice' type='button' class='btn'><i class='fas fa-caret-right'></i></button>
+                    <button id='lastDevice' type='button' class='btn'><i class='fas fa-step-forward'></i></button>
+                </div>
+                <div class='col'>
+                    <button id='addDevice' type='button' class='btn'>Add <i class="fas fa-plus-circle"></i></button>
+                    <button id='deleteDevice' type='button' class='btn'>Delete <i class='fas fa-minus-circle'></i></button>
+                    <button id='saveDevice' type='button' class='btn' onClick="location.reload()">Save <i class='fas fa-save'></i></button>
+                    <button id='cancelChanges' type='button' class='btn'>Cancel <i class="fas fa-times-circle"></i></button>
+                </div>
+            </div>
+        </div>
+        <div id="result"></div>
+    </body>
+</html>
